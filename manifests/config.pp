@@ -150,9 +150,9 @@ class arc_ce::config (
     require => Package['nordugrid-arc-compute-element']
   }
 
-  class { 'arc_ce::lcmaps::config': argus_server => $argus_server }
+#  class { 'arc_ce::lcmaps::config': argus_server => $argus_server }
 
-  class { 'arc_ce::lcas::config': }
+#  class { 'arc_ce::lcas::config': }
 
   # plugin to set a default runtime environment
   file { '/usr/local/bin/default_rte_plugin.py':
