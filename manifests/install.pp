@@ -3,6 +3,6 @@ class arc_ce::install {
     ensure  => present,
   }
 
-  include arc_ce::lcmaps::install
-  include arc_ce::lcas::install
+#  include arc_ce::lcmaps::install
+#  include arc_ce::lcas::install
 }
