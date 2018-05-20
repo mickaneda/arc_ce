@@ -3,6 +3,10 @@ class arc_ce::install {
     ensure  => present,
   }
 
-#  include arc_ce::lcmaps::install
-#  include arc_ce::lcas::install
+  if $enable_lcmaps {
+    include arc_ce::lcmaps::install
+  }
+  if $enable_lcas {
+    include arc_ce::lcas::install
+  }
 }

@@ -157,4 +157,6 @@ class arc_ce (
   class { 'arc_ce::services':
     require => Class['arc_ce::config'],
   }
+  $enable_lcmaps = true
+  $enable_lcas = true
 }
