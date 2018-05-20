@@ -1,4 +1,6 @@
-class arc_ce::install {
+class arc_ce::install (
+  $enable_lcmaps       = true,
+  $enable_lcas         = true,) {
   package { 'nordugrid-arc-compute-element':
     ensure  => present,
   }

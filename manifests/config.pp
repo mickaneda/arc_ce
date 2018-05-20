@@ -80,7 +80,9 @@ class arc_ce::config (
   $session_dir         = ['/var/spool/arc/grid00'],
   $setup_RTEs          = true,
   $use_argus           = false,
-  $hostname            = $::fqdn,) {
+  $hostname            = $::fqdn,
+  $enable_lcmaps       = true,
+  $enable_lcas         = true,) {
   file { $session_dir: ensure => directory, }
 
   file { $cache_dir: ensure => directory, }

@@ -84,7 +84,9 @@ class arc_ce (
   $session_dir         = ['/var/spool/arc/grid00'],
   $setup_RTEs          = true,
   $use_argus           = false,
-  $hostname            = $::fqdn,) {
+  $hostname            = $::fqdn,
+  $enable_lcmaps       = true,
+  $enable_lcas         = true,) {
   if $manage_repository {
     if $install_from_repository == 'nordugrid' {
       class { 'arc_ce::repositories':
@@ -103,7 +105,10 @@ class arc_ce (
     Class['arc_ce::repositories'] -> Package[nordugrid-arc-compute-element]
   }
 
-  class { 'arc_ce::install':  }
+  class { 'arc_ce::install':
+    enable_lcmaps              => $enable_lcmaps,
+    enable_lcmaps              => $enable_lcas,
+  }
 
   class { 'arc_ce::config':
     allow_new_jobs             => $allow_new_jobs,
@@ -148,6 +153,8 @@ class arc_ce (
     use_argus                  => $use_argus,
     require                    => Class['arc_ce::install'],
     hostname                   => $hostname,
+    enable_lcmaps              => $enable_lcmaps,
+    enable_lcas                => $enable_lcas,
   }
   if $enable_firewall {
     class { 'arc_ce::firewall':
@@ -157,6 +164,4 @@ class arc_ce (
   class { 'arc_ce::services':
     require => Class['arc_ce::config'],
   }
-  $enable_lcmaps = true
-  $enable_lcas = true
 }
