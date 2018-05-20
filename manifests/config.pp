@@ -154,7 +154,7 @@ class arc_ce::config (
     class { 'arc_ce::lcmaps::config': argus_server => $argus_server }
   }
 
-  if $enable_lcas
+  if $enable_lcas {
     class { 'arc_ce::lcas::config': }
   }
 
