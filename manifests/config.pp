@@ -133,7 +133,7 @@ class arc_ce::config (
 
   # Added to use the same pid files as configured in /etc/arc.conf
   file { '/etc/logrotate.d/nordugrid-arc-arex':
-    ensure  => $ensure,
+    ensure  => present,
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
@@ -142,7 +142,7 @@ class arc_ce::config (
   }
 
   file { '/etc/logrotate.d/nordugrid-arc-gridftpd':
-    ensure  => $ensure,
+    ensure  => present,
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
