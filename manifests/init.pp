@@ -107,7 +107,7 @@ class arc_ce (
 
   class { 'arc_ce::install':
     enable_lcmaps              => $enable_lcmaps,
-    enable_lcmaps              => $enable_lcas,
+    enable_lcas                => $enable_lcas,
   }
 
   class { 'arc_ce::config':
