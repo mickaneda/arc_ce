@@ -3,7 +3,7 @@ class arc_ce::repositories (
   $use_nordugrid          = false,
   $use_emi                = false,
   $emi_repo_version       = 3,
-  $enable_trustanchors    = true
+  $enable_trustanchors    = true,
   $enable_lcmaps          = true,
   $enable_lcas            = true
  ) {
