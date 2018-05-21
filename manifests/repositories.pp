@@ -70,13 +70,11 @@ class arc_ce::repositories (
     }else{
       $source = 'http://repository.egi.eu/sw/production/umd/3/sl6/x86_64/updates/umd-release-3.14.4-1.el6.noarch.rpm'
     }
-      package {
-        'umd-release',
-        ensure => installed,
-        source => "$source",
-        provider => rpm,
-        #require  => Package['epel-release'],
-      }
+    package { 'umd-release':
+      ensure => installed,
+      source => "$source",
+      provider => rpm,
+      #require  => Package['epel-release'],
     }
   }
 }
