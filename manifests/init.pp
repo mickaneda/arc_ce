@@ -76,7 +76,7 @@ class arc_ce (
   $log_directory       = '/var/log/arc',
   $lrms                = 'fork',
   $mail                = 'gridmaster@hep.lu.se',
-  $nordugrid_repo_version = '13.11',
+  $nordugrid_repo_version = '15.03',
   $queues              = {},
   $resource_location   = 'Bristol, UK',
   $resource_latitude   = '51.4585',
