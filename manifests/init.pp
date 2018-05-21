@@ -93,13 +93,17 @@ class arc_ce (
       class { 'arc_ce::repositories':
         use_nordugrid          => true,
         nordugrid_repo_version => $nordugrid_repo_version,
-        enable_trustanchors    => $enable_trustanchors
+        enable_trustanchors    => $enable_trustanchors,
+        enable_lcmaps          => $enable_lcmaps,
+        enable_lcas            => $enable_lcas,
       }
     } else {
       class { 'arc_ce::repositories':
         use_emi                => true,
         emi_repo_version       => $emi_repo_version,
-        enable_trustanchors    => $enable_trustanchors
+        enable_trustanchors    => $enable_trustanchors,
+        enable_lcmaps          => $enable_lcmaps,
+        enable_lcas            => $enable_lcas,
       }
     }
     Class['arc_ce::repositories'] -> Class['Arc_ce::Install']

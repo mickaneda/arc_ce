@@ -4,7 +4,8 @@ class arc_ce::repositories (
   $use_emi                = false,
   $emi_repo_version       = 3,
   $enable_trustanchors    = true
-  
+  $enable_lcmaps          = true,
+  $enable_lcas            = true
  ) {
   if !$use_emi and !$use_nordugrid {
     notify { 'No repository for ARC CE defined': }
@@ -54,13 +55,28 @@ class arc_ce::repositories (
     }
   }
   if $enable_trustanchors {
-  yumrepo { 'EGI-trustanchors':
-    descr    => 'EGI-trustanchors',
-    baseurl  => 'http://repository.egi.eu/sw/production/cas/1/current/',
-    gpgcheck => 1,
-    gpgkey   => 'http://repository.egi.eu/sw/production/cas/1/GPG-KEY-EUGridPMA-RPM-3',
-    enabled  => 1,
-    priority => 80,
+    yumrepo { 'EGI-trustanchors':
+      descr    => 'EGI-trustanchors',
+      baseurl  => 'http://repository.egi.eu/sw/production/cas/1/current/',
+      gpgcheck => 1,
+      gpgkey   => 'http://repository.egi.eu/sw/production/cas/1/GPG-KEY-EUGridPMA-RPM-3',
+      enabled  => 1,
+      priority => 80,
+    }
   }
- }
+  if $enable_lcmaps or $enable_lcas {
+    if $facts['os']['family'] == 'RedHat' and $facts['os']['release']['major'] == '7' {
+      $source = 'http://repository.egi.eu/sw/production/umd/4/centos7/x86_64/updates/umd-release-4.1.3-1.el7.centos.noarch.rpm'
+    }else{
+      $source = 'http://repository.egi.eu/sw/production/umd/3/sl6/x86_64/updates/umd-release-3.14.4-1.el6.noarch.rpm'
+    }
+      package {
+        'umd-release',
+        ensure => installed,
+        source => "$source",
+        provider => rpm,
+        #require  => Package['epel-release'],
+      }
+    }
+  }
 }
