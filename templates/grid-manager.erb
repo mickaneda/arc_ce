@@ -30,6 +30,7 @@ runtimedir="/etc/arc/runtime"
 <%- bench_desc='Si2k'-%>
 <%- end -%>
 
+<%- if @enable_apel == true -%>
 <%- if @apel_testing == true -%>
 <%- stomp_conf='topic:/queue/global.accounting.cputest.CENTRAL,use_ssl:false,Network:TEST-NWOB' -%>
 <%- broker='APEL:http://test-msg02.afroditi.hellasgrid.gr:6163'-%>
@@ -41,6 +42,7 @@ jobreport="<%= broker %>"
 jobreport_options="urbatch:<%= @apel_urbatch %>,archiving:<%= @accounting_archives %>,gocdb_name:<%= @domain_name %>,<%= stomp_conf %>,benchmark_type:<%= bench %>,benchmark_value:<%= bench_val %>,benchmark_description:<%= bench_desc %>"
 jobreport_credentials="/etc/grid-security/hostkey.pem /etc/grid-security/hostcert.pem /etc/grid-security/certificates"
 jobreport_publisher="jura"
+<%- end -%>
 # web service
 #arex_mount_point="https://<%= @fqdn %>:<%= @arex_port %>/arex"
 #enable_emies_interface=yes

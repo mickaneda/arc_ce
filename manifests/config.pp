@@ -3,6 +3,7 @@
 class arc_ce::config (
   $allow_new_jobs      = 'yes',
   $accounting_archives = '/var/run/arc/urs',
+  $enable_apel         = true,
   $apel_testing        = true,
   $apel_urbatch          = '1000',
   $apply_fixes         = '',
