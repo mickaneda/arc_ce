@@ -88,7 +88,7 @@ class arc_ce (
   $hostname            = $::fqdn,
   $enable_lcmaps       = true,
   $enable_lcas         = true,
-  $enable_nordugridmap = true
+  $enable_nordugridmap = true,
   $gridftp_groupcfg    = "users",) {
   if $manage_repository {
     if $install_from_repository == 'nordugrid' {
