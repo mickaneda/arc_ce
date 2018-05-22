@@ -19,7 +19,7 @@ maxconnections = <%= @gridftp_max_connections -%>
 
 [gridftpd/jobs]
 <% if @gridftp_groupcfg != "" -%>
-groupcfg="<%= @gridftp_groupcfg -%>"
+groupcfg="<%= @gridftp_groupcfg %>"
 <% end -%>
 path="/jobs"
 plugin="jobplugin.so"
