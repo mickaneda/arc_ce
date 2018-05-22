@@ -83,7 +83,9 @@ class arc_ce::config (
   $use_argus           = false,
   $hostname            = $::fqdn,
   $enable_lcmaps       = true,
-  $enable_lcas         = true,) {
+  $enable_lcas         = true,
+  $enable_nordugridmap = true,
+  $gridftp_groupcfg    = "users",) {
   file { $session_dir: ensure => directory, }
 
   file { $cache_dir: ensure => directory, }

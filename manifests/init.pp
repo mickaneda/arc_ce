@@ -87,7 +87,9 @@ class arc_ce (
   $use_argus           = false,
   $hostname            = $::fqdn,
   $enable_lcmaps       = true,
-  $enable_lcas         = true,) {
+  $enable_lcas         = true,
+  $enable_nordugridmap = true
+  $gridftp_groupcfg    = "users",) {
   if $manage_repository {
     if $install_from_repository == 'nordugrid' {
       class { 'arc_ce::repositories':
@@ -161,6 +163,8 @@ class arc_ce (
     hostname                   => $hostname,
     enable_lcmaps              => $enable_lcmaps,
     enable_lcas                => $enable_lcas,
+    enable_nordugridmap        => $enable_nordugridmap,
+    gridftp_groupcfg           => $gridftp_groupcfg,
   }
   if $enable_firewall {
     class { 'arc_ce::firewall':
@@ -169,5 +173,12 @@ class arc_ce (
   }
   class { 'arc_ce::services':
     require => Class['arc_ce::config'],
+  }
+  if ! $enable_nordugridmap {
+    file_line { 'disable cron job':
+      path    => '/etc/cron.d/nordugridmap',
+      line    => "#11 3,9,12,15,21 * * * root /usr/sbin/nordugridmap",
+      match   => "^[0-9]"
+    }
   }
 }
