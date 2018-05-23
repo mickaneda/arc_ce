@@ -1,19 +1,22 @@
-class arc_ce::users {
+class arc_ce::users (
+  $test_user = "griduser1",
+  $gid = 13370,
+  ){
   group {
       'grid':
         ensure => present,
         name   => 'grid',
-        gid => 13370,
+        gid => $gid,
     }
-    
+
   user{'griduser1':
     ensure     => present,
       comment    => 'grid user for tests',
       password   => '!!',
       shell      => '/bin/bash',
-      gid        => 13370,
-      home       => '/home/griduser1',
+      gid        => $gid,
+      home       => '/home/$test_user',
       managehome => true,
   }
-  Group['grid'] -> User['griduser1']
+  Group['grid'] -> User['$test_user']
 }
