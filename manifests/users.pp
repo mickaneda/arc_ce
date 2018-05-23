@@ -18,5 +18,5 @@ class arc_ce::users (
       home       => '/home/$test_user',
       managehome => true,
   }
-  Group['grid'] -> User['$test_user']
+  Group['grid'] -> User[$test_user]
 }
