@@ -89,7 +89,9 @@ class arc_ce (
   $enable_lcmaps       = true,
   $enable_lcas         = true,
   $enable_nordugridmap = true,
-  $gridftp_groupcfg    = "users",) {
+  $gridftp_groupcfg    = "users",
+  $grid_mapfile        = "/etc/grid-security/local-grid-mapfile",
+  ) {
   if $manage_repository {
     if $install_from_repository == 'nordugrid' {
       class { 'arc_ce::repositories':
@@ -165,6 +167,7 @@ class arc_ce (
     enable_lcas                => $enable_lcas,
     enable_nordugridmap        => $enable_nordugridmap,
     gridftp_groupcfg           => $gridftp_groupcfg,
+    grid_mapfile               => $grid_mapfile,
   }
   if $enable_firewall {
     class { 'arc_ce::firewall':

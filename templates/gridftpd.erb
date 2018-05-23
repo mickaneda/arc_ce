@@ -10,7 +10,7 @@ pidfile="<%= @run_directory %>/gridftpd.pid"
 port="2811"
 allowunknown="yes"
 
-unixmap="* mapfile /etc/grid-security/local-grid-mapfile"
+unixmap="* mapfile <%= @grid_mapfile %>"
 unixmap="* lcmaps liblcmaps.so /usr/lib64 /etc/lcmaps/lcmaps.db voms"
 unixmap="nobody:nobody all"
 <% if @gridftp_max_connections -%>
@@ -18,7 +18,7 @@ maxconnections = <%= @gridftp_max_connections -%>
 <% end -%>
 
 [gridftpd/jobs]
-<% if @gridftp_groupcfg != "" -%>
+<% if @gridftp_groupcfg -%>
 groupcfg="<%= @gridftp_groupcfg %>"
 <% end -%>
 path="/jobs"

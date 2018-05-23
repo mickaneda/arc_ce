@@ -85,7 +85,9 @@ class arc_ce::config (
   $enable_lcmaps       = true,
   $enable_lcas         = true,
   $enable_nordugridmap = true,
-  $gridftp_groupcfg    = "users",) {
+  $gridftp_groupcfg    = "users",
+  $grid_mapfile        = "/etc/grid-security/local-grid-mapfile",
+  ) {
   file { $session_dir: ensure => directory, }
 
   file { $cache_dir: ensure => directory, }
