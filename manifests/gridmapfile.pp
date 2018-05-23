@@ -4,7 +4,7 @@ class arc_ce::gridmapfile (
   ){
   if ($cert != ""){
     file { '/etc/grid-security/grid-mapfile':
-      content => "'/C=JP/O=KEK/OU=CRC/CN=KANEDA Michiru' $test_user"
+      content => "\"$cert\" $test_user"
     }
   }
 }
