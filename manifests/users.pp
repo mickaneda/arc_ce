@@ -15,7 +15,7 @@ class arc_ce::users (
       password   => '!!',
       shell      => '/bin/bash',
       gid        => $gid,
-      home       => '/home/$test_user',
+      home       => "/home/$test_user",
       managehome => true,
   }
   Group['grid'] -> User[$test_user]
