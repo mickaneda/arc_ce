@@ -9,6 +9,9 @@ class arc_ce::config (
   $apply_fixes         = '',
   $arex_port           = '60000',
   $argus_server        = 'argus.example.com',
+  $argus_port          = '8154',
+  $argus_resourceid    = 'http://authz-interop.org/xacml/resource/resource-type/arc',
+  $argus_actionid      = 'http://glite.org/xacml/action/execute',
   $authorized_vos      = [
     'alice',
     'atlas',
@@ -158,7 +161,12 @@ class arc_ce::config (
   }
 
   if $enable_lcmaps {
-    class { 'arc_ce::lcmaps::config': argus_server => $argus_server }
+    class { 'arc_ce::lcmaps::config':
+    argus_server => $argus_server,
+    argus_port => $argus_port,
+    argus_resourceid => $argus_resourceid,
+    argus_actionid => $argus_actionid,
+    }
   }
 
   if $enable_lcas {

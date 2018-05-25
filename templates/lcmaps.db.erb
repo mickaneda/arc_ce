@@ -6,9 +6,9 @@ verify_proxy = "lcmaps_verify_proxy.mod"
                     "--allow-limited-proxy"
  
 pepc = "lcmaps_c_pep.mod"
-            "--pep-daemon-endpoint-url https://<%= @argus_server %>:8154/authz"
-            "--resourceid http://authz-interop.org/xacml/resource/resource-type/arc"
-            "--actionid http://glite.org/xacml/action/execute"
+            "--pep-daemon-endpoint-url https://<%= @argus_server %>:<%= @argus_port %>/authz"
+            "--resourceid <%= @argus_resourceid %>
+            "--actionid <% = @argus_actionid %>
             "--capath /etc/grid-security/certificates/"
             "--certificate /etc/grid-security/hostcert.pem"
             "--key /etc/grid-security/hostkey.pem"
