@@ -94,6 +94,7 @@ class arc_ce (
   $enable_nordugridmap = true,
   $gridftp_groupcfg    = "users",
   $grid_mapfile        = "/etc/grid-security/local-grid-mapfile",
+  $lcas_timeout        = "5",
   ) {
   if $manage_repository {
     if $install_from_repository == 'nordugrid' {
@@ -174,6 +175,7 @@ class arc_ce (
     enable_nordugridmap        => $enable_nordugridmap,
     gridftp_groupcfg           => $gridftp_groupcfg,
     grid_mapfile               => $grid_mapfile,
+    lcas_timeout               => $lcas_timeout,
   }
   if $enable_firewall {
     class { 'arc_ce::firewall':

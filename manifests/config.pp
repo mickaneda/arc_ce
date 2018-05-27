@@ -90,6 +90,7 @@ class arc_ce::config (
   $enable_nordugridmap = true,
   $gridftp_groupcfg    = "users",
   $grid_mapfile        = "/etc/grid-security/local-grid-mapfile",
+  $lcas_timeout        = "5",
   ) {
   file { $session_dir: ensure => directory, }
 
