@@ -96,6 +96,8 @@ class arc_ce (
   $gridftp_groupcfg    = "users",
   $grid_mapfile        = "/etc/grid-security/local-grid-mapfile",
   $lcas_timeout        = "5",
+  $memory_req          = "",
+  $disable_remove      = false,
   ) {
   if $manage_repository {
     if $install_from_repository == 'nordugrid' {
@@ -178,6 +180,8 @@ class arc_ce (
     gridftp_groupcfg           => $gridftp_groupcfg,
     grid_mapfile               => $grid_mapfile,
     lcas_timeout               => $lcas_timeout,
+    memory_req                 => $memory_req,
+    disable_remove             => $disable_remove,
   }
   if $enable_firewall {
     class { 'arc_ce::firewall':
@@ -192,6 +196,26 @@ class arc_ce (
       path    => '/etc/cron.d/nordugridmap',
       line    => "#11 3,9,12,15,21 * * * root /usr/sbin/nordugridmap",
       match   => "^[0-9]"
+    }
+  }
+  if $memory_req != "" {
+    file_line { 'fix memory_req':
+      path    => '/usr/share/arc/submit-condor-job',
+      line    => "memory_req=$memory_req",
+      match   => 'memory_req=$(( $joboption_memory ))'
+    }
+    $memory_bytes = $memory_req * 1024
+    file_line { 'fix memory_bytes':
+      path    => '/usr/share/arc/submit-condor-job',
+      line    => "memory_req=$memory_bytes",
+      match   => 'memory_bytes=$(( $joboption_memory * 1024 ))'
+    }
+  }
+  if $disable_remove {
+    file_line { 'disable remove':
+      path    => '/usr/share/arc/submit-condor-job',
+      line    => '#REMOVE="${REMOVE} || ResidentSetSize > JobMemoryLimit"',
+      match   => 'REMOVE="${REMOVE} || ResidentSetSize > JobMemoryLimit"'
     }
   }
 }

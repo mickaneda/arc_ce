@@ -92,6 +92,8 @@ class arc_ce::config (
   $gridftp_groupcfg    = "users",
   $grid_mapfile        = "/etc/grid-security/local-grid-mapfile",
   $lcas_timeout        = "5",
+  $memory_req          = "",
+  $disable_remove      = false,
   ) {
 
   exec { "Create ${controldir}":
