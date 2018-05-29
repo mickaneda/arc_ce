@@ -81,6 +81,7 @@ class arc_ce::config (
   $resource_latitude   = '51.4585',
   $resource_longitude  = '-02.6021',
   $run_directory       = '/var/run/arc',
+  $controldir          = '/var/spool/arc/jobstatus',
   $session_dir         = ['/var/spool/arc/grid00'],
   $setup_RTEs          = true,
   $use_argus           = false,
@@ -92,9 +93,10 @@ class arc_ce::config (
   $grid_mapfile        = "/etc/grid-security/local-grid-mapfile",
   $lcas_timeout        = "5",
   ) {
-  file { $session_dir: ensure => directory, }
+  file { $controldir: ensure => directory}
+  file { $session_dir: ensure => directory}
 
-  file { $cache_dir: ensure => directory, }
+  file { $cache_dir: ensure => directory}
 
   concat { '/etc/arc.conf': require => Package['nordugrid-arc-compute-element'],
     notify => Service['a-rex'],
