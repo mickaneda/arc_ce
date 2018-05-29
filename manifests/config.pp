@@ -93,10 +93,19 @@ class arc_ce::config (
   $grid_mapfile        = "/etc/grid-security/local-grid-mapfile",
   $lcas_timeout        = "5",
   ) {
-  file { $controldir: ensure => directory}
-  file { $session_dir: ensure => directory}
 
-  file { $cache_dir: ensure => directory}
+  exec { "Create ${controldir}":
+    command => "mkdir -p ${controldir}",
+    path => $::path
+  }
+  exec { "Create ${session_dir}":
+    command => "mkdir -p ${session_dir}",
+    path => $::path
+  }
+  exec { "Create ${cache_dir}":
+    command => "mkdir -p ${cache_dir}",
+    path => $::path
+  }
 
   concat { '/etc/arc.conf': require => Package['nordugrid-arc-compute-element'],
     notify => Service['a-rex'],
