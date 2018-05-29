@@ -97,7 +97,7 @@ class arc_ce (
   $grid_mapfile        = "/etc/grid-security/local-grid-mapfile",
   $lcas_timeout        = "5",
   $memory_req          = "",
-  $disable_remove      = false,
+  $disable_remove_by_memory_limit      = false,
   ) {
   if $manage_repository {
     if $install_from_repository == 'nordugrid' {
@@ -181,7 +181,7 @@ class arc_ce (
     grid_mapfile               => $grid_mapfile,
     lcas_timeout               => $lcas_timeout,
     memory_req                 => $memory_req,
-    disable_remove             => $disable_remove,
+    disable_remove_by_memory_limit => $disable_remove_by_memory_limit,
   }
   if $enable_firewall {
     class { 'arc_ce::firewall':
@@ -213,8 +213,8 @@ class arc_ce (
       append_on_no_match => false,
     }
   }
-  if $disable_remove {
-    file_line { 'disable remove':
+  if $disable_remove_by_memory_limit {
+    file_line { 'disable remove by memory limit':
       path    => '/usr/share/arc/submit-condor-job',
       line    => '  #REMOVE="${REMOVE} || ResidentSetSize > JobMemoryLimit"',
       match   => "^ *REMOVE=\"\\\${REMOVE}.*ResidentSetSize > JobMemoryLimit\"$",

@@ -93,7 +93,7 @@ class arc_ce::config (
   $grid_mapfile        = "/etc/grid-security/local-grid-mapfile",
   $lcas_timeout        = "5",
   $memory_req          = "",
-  $disable_remove      = false,
+  $disable_remove_by_memory_limit = false,
   ) {
 
   $dirs = [$controldir] + $session_dir + $cache_dir
