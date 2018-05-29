@@ -217,7 +217,7 @@ class arc_ce (
     file_line { 'disable remove':
       path    => '/usr/share/arc/submit-condor-job',
       line    => '  #REMOVE="${REMOVE} || ResidentSetSize > JobMemoryLimit"',
-      match   => "^ *REMOVE=\"\\\${REMOVE} *\|\| *ResidentSetSize > JobMemoryLimit\"$",
+      match   => "^ *REMOVE=\"\\\${REMOVE}.*ResidentSetSize > JobMemoryLimit\"$",
       append_on_no_match => false,
     }
   }
