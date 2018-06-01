@@ -15,14 +15,14 @@ class arc_ce::file_line (
     file_line { 'fix memory_req':
       path    => '/usr/share/arc/submit-condor-job',
       line    => "  memory_req=$memory_req",
-      match   => "^  memory_req=",
+      match   => "^ *memory_req=(?:(?!joboption_count).)*$",
       append_on_no_match => false,
     }
     $memory_bytes = $memory_req * 1024
     file_line { 'fix memory_bytes':
       path    => '/usr/share/arc/submit-condor-job',
       line    => "  memory_bytes=$memory_bytes",
-      match   => "^  memory_bytes=.",
+      match   => "^ *memory_bytes=(?:(?!joboption_count).)*$",
       append_on_no_match => false,
     }
   }
@@ -30,7 +30,7 @@ class arc_ce::file_line (
     file_line { 'disable remove by memory limit':
       path    => '/usr/share/arc/submit-condor-job',
       line    => '  #REMOVE="${REMOVE} || ResidentSetSize > JobMemoryLimit"',
-      match   => "^  REMOVE=\"\\\${REMOVE}.*ResidentSetSize > JobMemoryLimit\"$",
+      match   => "^ *REMOVE=\"\\\${REMOVE}.*ResidentSetSize > JobMemoryLimit\"$",
       append_on_no_match => false,
     }
   }
