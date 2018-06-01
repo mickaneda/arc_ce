@@ -15,14 +15,14 @@ class arc_ce::file_line (
     file_line { 'fix memory_req':
       path    => '/usr/share/arc/submit-condor-job',
       line    => "  memory_req=$memory_req",
-      match   => "^  memory_req=.*\\\$joboption_memory.*",
+      match   => "^  memory_req=",
       append_on_no_match => false,
     }
     $memory_bytes = $memory_req * 1024
     file_line { 'fix memory_bytes':
       path    => '/usr/share/arc/submit-condor-job',
-      line    => "  memory_req=$memory_bytes",
-      match   => "^  memory_bytes=.*\\\$joboption_memory.*",
+      line    => "  memory_bytes=$memory_bytes",
+      match   => "^  memory_bytes=.",
       append_on_no_match => false,
     }
   }
