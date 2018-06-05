@@ -10,6 +10,21 @@ comment="<%= queue_data['comment'] -%>"
 <% if queue_data['homogeneity'] -%>
 homogeneity="<%= queue_data['homogeneity'] -%>"
 <% end -%>
+<% if queue_data['OSName'] -%>
+opsys="<%= queue_data['OSName'] -%>"
+<% end -%>
+<% if queue_data['OSVersion'] -%>
+opsys="<%= queue_data['OSVersion'] -%>"
+<% end -%>
+<% if queue_data['OSVersionName'] -%>
+opsys="<%= queue_data['OSVersionName'] -%>"
+<% end -%>
+<% if queue_data['OSFamily'] -%>
+OSFamily="<%= queue_data['OSFamily'] -%>"
+<% end -%>
+<% if queue_data['nodecpu'] -%>
+nodecpu="<%= queue_data['nodecpu'] -%>"
+<% end -%>
 <% if queue_data['main_memory_size'] -%>
 MainMemorySize="<%= queue_data['main_memory_size'] -%>"
 <% end -%>
