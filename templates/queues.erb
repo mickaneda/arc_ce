@@ -22,6 +22,9 @@ opsys="<%= queue_data['OSVersionName'] -%>"
 <% if queue_data['OSFamily'] -%>
 OSFamily="<%= queue_data['OSFamily'] -%>"
 <% end -%>
+<% if queue_data['Platform'] -%>
+Platform="<%= queue_data['Platform'] -%>"
+<% end -%>
 <% if queue_data['nodecpu'] -%>
 nodecpu="<%= queue_data['nodecpu'] -%>"
 <% end -%>
