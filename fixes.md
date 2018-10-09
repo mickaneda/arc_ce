@@ -62,3 +62,19 @@ to
     $lrms_queue{mincputime} = '0';
     $lrms_queue{defaultcput} = '2880';
 ```
+
+## Non zero cpus
+Changed number of machines in /usr/share/arc/Condor.pm from
+```perl
+sub condor_cluster_totalcpus() {
+...
+    return $totalcpus;
+```
+to
+```perl
+sub condor_cluster_totalcpus() {
+...
+    $totalcpus ||= 100;
+    return $totalcpus;
+```
+
