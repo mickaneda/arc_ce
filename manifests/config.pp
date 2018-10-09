@@ -94,6 +94,7 @@ class arc_ce::config (
   $lcas_timeout        = "5",
   $memory_req          = "",
   $disable_remove_by_memory_limit = false,
+  $dynamic_cpus        = false,
   ) {
 
   $dirs = [$controldir] + $session_dir + $cache_dir

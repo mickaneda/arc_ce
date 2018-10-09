@@ -2,6 +2,7 @@ class arc_ce::file_line (
   $enable_nordugridmap = true,
   $memory_req = "",
   $disable_remove_by_memory_limit = false,
+  $dynamic_cpus = false,
   ){
   if ! $enable_nordugridmap {
     file_line { 'disable cron job':
@@ -31,6 +32,42 @@ class arc_ce::file_line (
       path    => '/usr/share/arc/submit-condor-job',
       line    => '  #REMOVE="${REMOVE} || ResidentSetSize > JobMemoryLimit"',
       match   => "^ *REMOVE=\"\\\${REMOVE}.*ResidentSetSize > JobMemoryLimit\"$",
+      append_on_no_match => false,
+    }
+  }
+  if $dynamic_cpus {
+    $lines = "sub condor_cluster_totalcpus() {
+    # List all machines in the pool. Create a hash specifying the TotalCpus
+    # for each machine.
+    my %machines;
+    $machines{$$_{machine}} = $$_{totalcpus} for @allnodedata;
+
+    my $totalcpus = 0;
+    for (keys %machines) {
+        $totalcpus += $machines{$_};
+    }
+
+    return $totalcpus;
+}"
+    $lines_fixed = "sub condor_cluster_totalcpus() {
+    # List all machines in the pool. Create a hash specifying the TotalCpus
+    # for each machine.
+    my %machines;
+    $machines{$$_{machine}} = $$_{totalcpus} for @allnodedata;
+
+    my $totalcpus = 0;
+    for (keys %machines) {
+        $totalcpus += $machines{$_};
+    }
+
+    # Non-zero cpus for dynamic HTCondor pool
+    $totalcpus ||= 100;
+    return $totalcpus;
+}"
+    file_line { 'Non-zero cpus for dynamic HTCondor pool':
+      path    => '/usr/share/arc/Condor.pm',
+      line  => $lines_new,
+      match => $lines,
       append_on_no_match => false,
     }
   }
