@@ -36,33 +36,33 @@ class arc_ce::file_line (
     }
   }
   if $dynamic_cpus {
-    $lines = 'sub condor_cluster_totalcpus() {
+    $lines = 'sub condor_cluster_totalcpus\() {
     # List all machines in the pool. Create a hash specifying the TotalCpus
     # for each machine.
     my %machines;
-    $machines{$$_{machine}} = $$_{totalcpus} for @allnodedata;
+    \$machines{\$\$_{machine}} = \$\$_{totalcpus} for @allnodedata;
 
-    my $totalcpus = 0;
-    for (keys %machines) {
-        $totalcpus += $machines{$_};
+    my \$totalcpus = 0;
+    for \(keys %machines) {
+        \$totalcpus += \$machines{\$_};
     }
 
-    return $totalcpus;
+    return \$totalcpus;
 }'
-    $lines_fixed = 'sub condor_cluster_totalcpus() {
+    $lines_fixed = 'sub condor_cluster_totalcpus\() {
     # List all machines in the pool. Create a hash specifying the TotalCpus
     # for each machine.
     my %machines;
-    $machines{$$_{machine}} = $$_{totalcpus} for @allnodedata;
+    \$machines{\$\$_{machine}} = \$\$_{totalcpus} for @allnodedata;
 
     my $totalcpus = 0;
-    for (keys %machines) {
-        $totalcpus += $machines{$_};
+    for \(keys %machines) {
+        \$totalcpus += \$machines{\$_};
     }
 
     # Non-zero cpus for dynamic HTCondor pool
-    $totalcpus ||= 100;
-    return $totalcpus;
+    \$totalcpus ||= 100;
+    return \$totalcpus;
 }'
     file_line { 'Non-zero cpus for dynamic HTCondor pool':
       path    => '/usr/share/arc/Condor.pm',
