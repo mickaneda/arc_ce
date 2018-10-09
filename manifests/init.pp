@@ -98,7 +98,7 @@ class arc_ce (
   $lcas_timeout        = "5",
   $memory_req          = "",
   $disable_remove_by_memory_limit      = false,
-  $dynamic_cpus        = false,
+  $apply_fixes_dynamic_cpus = "",
   ) {
   if $manage_repository {
     if $install_from_repository == 'nordugrid' {
@@ -183,7 +183,7 @@ class arc_ce (
     lcas_timeout               => $lcas_timeout,
     memory_req                 => $memory_req,
     disable_remove_by_memory_limit => $disable_remove_by_memory_limit,
-    dynamic_cpus               => $dynamic_cpus,
+    apply_fixes_dynamic_cpus   => $apply_fixes_dynamic_cpus,
   }
   if $enable_firewall {
     class { 'arc_ce::firewall':
@@ -195,7 +195,6 @@ class arc_ce (
     enable_nordugridmap => $enable_nordugridmap,
     memory_req => $memory_req,
     disable_remove_by_memory_limit => $disable_remove_by_memory_limit,
-    dynamic_cpus => $dynamic_cpus,
   }
   class { 'arc_ce::services':
     require => Class['arc_ce::config'],

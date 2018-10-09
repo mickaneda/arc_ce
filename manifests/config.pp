@@ -94,7 +94,7 @@ class arc_ce::config (
   $lcas_timeout        = "5",
   $memory_req          = "",
   $disable_remove_by_memory_limit = false,
-  $dynamic_cpus        = false,
+  $apply_fixes_dynamic_cpus = "",
   ) {
 
   $dirs = [$controldir] + $session_dir + $cache_dir
@@ -213,4 +213,13 @@ class arc_ce::config (
       backup => true,
     }
   }
+
+  # apply manual fixes for dynamic pool
+  if $apply_fixes_dynamic_cpus {
+    file { '/usr/share/arc/Condor.pm':
+      source => "puppet:///modules/${module_name}/fixes/Condor.ARC.$apply_fixes_dynamic_cpus.dynamic",
+      backup => true,
+    }
+   }
+
 }
