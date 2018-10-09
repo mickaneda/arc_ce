@@ -217,7 +217,7 @@ class arc_ce::config (
   # apply manual fixes for dynamic pool
   if $apply_fixes_dynamic_cpus {
     file { '/usr/share/arc/Condor.pm':
-      source => "puppet:///modules/${module_name}/fixes/Condor.ARC.$apply_fixes_dynamic_cpus.dynamic",
+      source => "puppet:///modules/${module_name}/fixes/Condor.pm.ARC.$apply_fixes_dynamic_cpus.dynamic",
       backup => true,
     }
    }
