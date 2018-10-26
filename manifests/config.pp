@@ -7,7 +7,7 @@ class arc_ce::config (
   $apel_testing        = true,
   $jobreport_logfile_dir = '',
   $apel_urbatch        = '1000',
-  $apply_fixes         = '',
+  $apply_fixes         = false,
   $arex_port           = '60000',
   $argus_server        = 'argus.example.com',
   $argus_port          = '8154',
@@ -95,7 +95,7 @@ class arc_ce::config (
   $lcas_timeout        = "5",
   $memory_req          = "",
   $disable_remove_by_memory_limit = false,
-  $apply_fixes_dynamic_cpus = "",
+  $apply_fixes_dynamic_cpus = false,
   ) {
 
   $dirs = [$controldir] + $session_dir + $cache_dir
