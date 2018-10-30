@@ -30,6 +30,11 @@ runtimedir="/etc/arc/runtime"
 <%- bench_desc='Si2k'-%>
 <%- end -%>
 
+<%- if @jobreport_logfile_dir != '' -%>
+jobreport_logfile="<%= @jobreport_logfile_dir %>/job.logger.errors"
+<%- else -%>
+jobreport_logfile="<%= @controldir %>/job.logger.errors"
+<%- end -%>
 <%- if @enable_apel == true -%>
 <%- if @apel_testing == true -%>
 <%- stomp_conf='topic:/queue/global.accounting.cputest.CENTRAL,use_ssl:false,Network:TEST-NWOB' -%>
@@ -39,11 +44,6 @@ runtimedir="/etc/arc/runtime"
 <%- broker='APEL:https://mq.cro-ngi.hr:6162'-%>
 <%- end -%>
 jobreport="<%= broker %>"
-<%- if @jobreport_logfile_dir != '' -%>
-jobreport_logfile="<%= @jobreport_logfile_dir %>/job.logger.errors"
-<%- else -%>
-jobreport_logfile="<%= @controldir %>/job.logger.errors"
-<%- end -%>
 jobreport_options="urbatch:<%= @apel_urbatch %>,archiving:<%= @accounting_archives %>,gocdb_name:<%= @domain_name %>,<%= stomp_conf %>,benchmark_type:<%= bench %>,benchmark_value:<%= bench_val %>,benchmark_description:<%= bench_desc %>"
 jobreport_credentials="/etc/grid-security/hostkey.pem /etc/grid-security/hostcert.pem /etc/grid-security/certificates"
 jobreport_publisher="jura"
