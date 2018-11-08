@@ -1,51 +1,20 @@
-/var/log/arc/grid-manager.log {
-  missingok
-  compress
-  delaycompress
-  daily
-  rotate 90
-  create
-  postrotate
-    /bin/systemctl restart a-rex 2> /dev/null || true
-  endscript
-}
-
-/var/log/arc/gm-jobs.log {
-  missingok
-  compress
-  delaycompress
-  daily
-  rotate 90
-  postrotate
-    /bin/systemctl restart a-rex 2> /dev/null || true
-  endscript
-  create
-}
-
-/var/log/arc/ws-interface.log {
-  missingok
-  compress
-  delaycompress
-  daily
-  rotate 90
-  postrotate
-    /bin/systemctl restart a-rex 2> /dev/null || true
-  endscript
-  create
-}
-
+/var/log/arc/grid-manager.log
+/var/log/arc/gm-jobs.log
+/var/log/arc/ws-interface.log
 <%- if @jobreport_logfile_dir != '' -%>
 <%- jobreport_logfile= @jobreport_logfile_dir + '/job.logger.errors' -%>
 <%- else -%>
 <%- jobreport_logfile= @controldir + '/job.logger.errors' -%>
 <%- end -%>
-<%= jobreport_logfile %> {
+<%= jobreport_logfile %>
+{
   missingok
   compress
   delaycompress
   daily
   rotate 90
   create
+  sharedscripts
   postrotate
     /bin/systemctl restart a-rex 2> /dev/null || true
   endscript
