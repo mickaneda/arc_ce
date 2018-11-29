@@ -19,6 +19,9 @@ max_infosys_requests=-1
 wakeupperiod="180"
 defaultttl="345600 432000"
 runtimedir="/etc/arc/runtime"
+<% @allowsubmit.each do |val| -%>
+allowsubmit="<%= val %>"
+<% end -%>
 
 <%if @benchmark_type == 'HEPSPEC' -%>
 <%- bench='HEPSPEC' -%>
@@ -29,7 +32,6 @@ runtimedir="/etc/arc/runtime"
 <%- bench_val=@cpu_scaling_reference_si00 -%>
 <%- bench_desc='Si2k'-%>
 <%- end -%>
-
 <%- if @jobreport_logfile_dir != '' -%>
 jobreport_logfile="<%= @jobreport_logfile_dir %>/job.logger.errors"
 <%- else -%>

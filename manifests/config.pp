@@ -93,6 +93,7 @@ class arc_ce::config (
   $gridftp_groupcfg    = "users",
   $grid_mapfile        = "/etc/grid-security/local-grid-mapfile",
   $lcas_timeout        = "5",
+  $groups              = {},
   $memory_req          = "",
   $disable_remove_by_memory_limit = false,
   $apply_fixes_dynamic_cpus = false,
