@@ -75,6 +75,7 @@ class arc_ce::config (
    },
 
   $log_directory       = '/var/log/arc',
+  $allowsubmit         = [],
   $lrms                = 'fork',
   $mail                = 'gridmaster@hep.lu.se',
   $queues              = {},

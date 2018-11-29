@@ -1,8 +1,10 @@
 [group/users]
 plugin="<%= @lcas_timeout %> /usr/libexec/arc/arc-lcas %D %P liblcas.so /usr/lib64 /etc/lcas/lcas.db"
-<% @groups.each_pair do |group_name, group_data| %>
-  [group/<%= group_name %>]
+<% @groups.each_pair do |group_name, group_data| -%>
+
+[group/<%= group_name %>]
 <% group_data.each do |val| %>
 <%= val %>
 <% end -%>
 <% end -%>
+

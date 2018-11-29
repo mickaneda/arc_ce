@@ -78,6 +78,7 @@ class arc_ce (
    },
 
   $log_directory       = '/var/log/arc',
+  $allowsubmit         = [],
   $lrms                = 'fork',
   $mail                = 'gridmaster@hep.lu.se',
   $nordugrid_repo_version = '15.03',
@@ -165,6 +166,7 @@ class arc_ce (
     hepspec_per_core           => $hepspec_per_core,
     infosys_registration       => $infosys_registration,
     log_directory              => $log_directory,
+    allowsubmit                => $allowsubmit,
     lrms                       => $lrms,
     mail                       => $mail,
     queues                     => $queues,
