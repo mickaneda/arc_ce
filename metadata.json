@@ -1,6 +1,6 @@
 {
   "name": "kreczko-arc_ce",
-  "version": "0.0.1",
+  "version": "2.2.0",
   "summary": "Puppet module for installation and configuration for an ARC CE",
   "author": "kreczko",
   "description": "Puppet module for installation and configuration for an ARC CE",
