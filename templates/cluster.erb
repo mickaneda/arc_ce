@@ -4,7 +4,9 @@ comment="<%= @cluster_comment %>"
 cluster_location="<%= @resource_location %>"
 cluster_owner="<%= @cluster_owner %>"
 clustersupport="<%= @mail %>"
-<% if @lrms == 'condor' -%>
+<% if @lrmsconfig != '' -%>
+lrmsconfig="<%= @lrmsconfig -%>"
+<% elsif @lrms == 'condor' -%>
 lrmsconfig="HTCondor <%= @condor_version -%>"
 <% end -%>
 <% if @cluster_is_homogenious == true -%>

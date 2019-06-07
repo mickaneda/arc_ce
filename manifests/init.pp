@@ -47,6 +47,7 @@ class arc_ce (
     'totalcpus'     => '42',
   }
   ,
+  $lrmsconfig          = '',
   $cluster_is_homogenious       = true,
   $cluster_nodes_private        = true,
   $cluster_owner       = 'Bristol HEP',
@@ -153,6 +154,7 @@ class arc_ce (
     cluster_comment            => $cluster_comment,
     cluster_cpudistribution    => $cluster_cpudistribution,
     cluster_description        => $cluster_description,
+    lrmsconfig                 => $lrmsconfig,
     cluster_is_homogenious     => $cluster_is_homogenious,
     cluster_nodes_private      => $cluster_nodes_private,
     cluster_owner              => $cluster_owner,
