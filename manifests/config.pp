@@ -77,6 +77,8 @@ class arc_ce::config (
   $log_directory       = '/var/log/arc',
   $allowsubmit         = [],
   $lrms                = 'fork',
+  $pbs_bin_path        = '',
+  $pbs_log_path        = '',
   $mail                = 'gridmaster@hep.lu.se',
   $queues              = {},
   $resource_location   = 'Bristol, UK',
