@@ -4,6 +4,9 @@ name="<%= queue_name -%>"
 <% if queue_data['default_memory'] -%>
 defaultmemory=<%= queue_data['default_memory'] %>
 <% end -%>
+<% if queue_data['MainMemorySize'] -%>
+defaultmemory=<%= queue_data['MainMemorySize'] %>
+<% end -%>
 <% if queue_data['comment'] -%>
 comment="<%= queue_data['comment'] -%>"
 <% end -%>
