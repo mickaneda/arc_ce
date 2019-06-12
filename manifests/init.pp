@@ -79,6 +79,7 @@ class arc_ce (
    },
 
   $log_directory       = '/var/log/arc',
+  $shared_filesystem  = 'no',
   $allowsubmit         = [],
   $lrms                = 'fork',
   $pbs_bin_path        = '',
@@ -170,6 +171,7 @@ class arc_ce (
     hepspec_per_core           => $hepspec_per_core,
     infosys_registration       => $infosys_registration,
     log_directory              => $log_directory,
+    shared_filesystem          => $shared_filesystem,
     allowsubmit                => $allowsubmit,
     lrms                       => $lrms,
     pbs_bin_path               => $pbs_bin_path,

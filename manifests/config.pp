@@ -76,6 +76,7 @@ class arc_ce::config (
    },
 
   $log_directory       = '/var/log/arc',
+  $shared_filesystem   = 'no',
   $allowsubmit         = [],
   $lrms                = 'fork',
   $pbs_bin_path        = '',
