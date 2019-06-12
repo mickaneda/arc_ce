@@ -79,7 +79,7 @@ class arc_ce (
    },
 
   $log_directory       = '/var/log/arc',
-  $shared_filesystem  = 'no',
+  $shared_filesystem   = 'no',
   $allowsubmit         = [],
   $lrms                = 'fork',
   $pbs_bin_path        = '',
