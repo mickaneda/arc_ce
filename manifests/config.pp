@@ -9,6 +9,7 @@ class arc_ce::config (
   $apel_urbatch        = '1000',
   $apply_fixes         = false,
   $arex_port           = '60000',
+  $cmd_prefix          = '',
   $argus_server        = 'argus.example.com',
   $argus_port          = '8154',
   $argus_resourceid    = 'http://authz-interop.org/xacml/resource/resource-type/arc',
