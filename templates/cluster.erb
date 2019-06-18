@@ -15,9 +15,10 @@ homogeneity="True"
 homogeneity="False"
 <% end -%>
 architecture="adotf"
-<% if @cluster_nodes_private == true -%>
+<% if @cluster_nodes_inbound == true -%>
 nodeaccess="inbound"
-<% else -%>
+<% end -%>
+<% if @cluster_nodes_private == false or @cluster_nodes_outbound == true -%>
 nodeaccess="outbound"
 <% end -%>
 <% @authorized_vos.each do |val| -%>

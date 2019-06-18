@@ -51,6 +51,8 @@ class arc_ce (
   $lrmsconfig          = '',
   $cluster_is_homogenious       = true,
   $cluster_nodes_private        = true,
+  $cluster_nodes_inbound        = false,
+  $cluster_nodes_outbound       = false,
   $cluster_owner       = 'Bristol HEP',
   $cores_per_worker    = '16',
   $cpu_scaling_reference_si00 = '3100',
