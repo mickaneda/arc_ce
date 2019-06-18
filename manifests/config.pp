@@ -48,6 +48,8 @@ class arc_ce::config (
   $lrmsconfig          = '',
   $cluster_is_homogenious       = true,
   $cluster_nodes_private        = true,
+  $cluster_nodes_inbound        = false,
+  $cluster_nodes_outbound       = false,
   $cluster_owner       = 'Bristol HEP',
   $cluster_registration_country = 'UK',
   $cluster_registration_name    = 'clustertoukglasgow',
