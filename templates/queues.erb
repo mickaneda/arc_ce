@@ -2,7 +2,9 @@
 [queue/<%= queue_name -%>]
 name="<%= queue_name -%>"
 <% queue_data.each_pair do |key, val| -%>
-<% if key == 'OSName' -%>
+<% if key == 'default_memory' -%>
+defaultmemory="<%= val -%>"
+<% elsif key == 'OSName' -%>
 opsys="<%= val -%>"
 OSName="<%= val -%>"
 <% elsif key == 'OSVersion' -%>
