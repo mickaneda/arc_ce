@@ -100,6 +100,8 @@ class arc_ce::config (
   $enable_nordugridmap = true,
   $gridftp_groupcfg    = "users",
   $grid_mapfile        = "/etc/grid-security/local-grid-mapfile",
+  $enable_perflog_reporting = "no",
+  $perflogdir          = "/var/log/arc/perfdata",
   $lcas_timeout        = "5",
   $groups              = {},
   $memory_req          = "",
