@@ -18,7 +18,7 @@ max_job_control_requests=-1
 max_infosys_requests=-1
 wakeupperiod="180"
 defaultttl="345600 432000"
-runtimedir="/etc/arc/runtime"
+runtimedir="<%= @runtimedir %>"
 <% @allowsubmit.each do |val| -%>
 allowsubmit="<%= val %>"
 <% end -%>

@@ -92,7 +92,13 @@ class arc_ce::config (
   $run_directory       = '/var/run/arc',
   $controldir          = '/var/spool/arc/jobstatus',
   $session_dir         = ['/var/spool/arc/grid00'],
+  $runtimedir          = '/etc/arc/runtime',
   $setup_RTEs          = true,
+  $rte_files           = {
+    'ENV/PROXY'=>"puppet:///modules/${module_name}/RTEs/PROXY",
+    'ENV/GLITE'=>"puppet:///modules/${module_name}/RTEs/GLITE",
+    'APPS/HEP/ATLAS-SITE-LCG'=>"puppet:///modules/${module_name}/RTEs/ATLAS-SITE-LCG",
+  },
   $use_argus           = false,
   $hostname            = $::fqdn,
   $enable_lcmaps       = true,
@@ -204,7 +210,12 @@ class arc_ce::config (
 
   # set up runtime environments
   if $setup_RTEs {
-    class {'arc_ce::runtime_env':}
+    class {'arc_ce::runtime_env':
+      setup_RTEs                 => $setup_RTEs,
+      runtimedir                 => $runtimedir,
+      rte_files                  => $rte_files,
+    }
+
   }
 
   # apply manual fixes
