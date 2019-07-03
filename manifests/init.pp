@@ -206,7 +206,7 @@ class arc_ce (
     run_directory              => $run_directory,
     controldir                 => $controldir,
     session_dir                => $session_dir,
-    cachedir                   => $ccachedir,
+    cachedir                   => $cachedir,
     remotecachedir             => $remotecachedir,
     cachesize                  => $cachesize,
     cachemax                   => $cachemax,
