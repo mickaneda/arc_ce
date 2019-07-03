@@ -61,4 +61,36 @@ authplugin="ACCEPTED timeout=60,onfailure=fail,onsuccess=pass %W/libexec/arc/arc
 <%if @cmd_prefix != '' -%>
 # Set command prefix (like singularity)
 cmd_prefix="<%= @cmd_prefix %>"
-<%- end %>
+<% end -%>
+
+<%if @cachedir != '' or @remotecachedir != '' -%>
+# Cache definition
+<%if @cachedir != '' -%>
+cachedir="<%= @cachedir %>"
+<% end -%>
+<%if @remotecachedir != '' -%>
+remotecachedir="<%= @remotecachedir %>"
+<% end -%>
+<%if @cachesize != '' -%>
+cachesize="<%= @cachesize %>"
+<% end -%>
+cacheshared="<%= @cacheshared %>"
+cachelogfile="<%= @cachelogfile %>"
+<% if @debug == true then -%>
+cacheloglevel="5"
+<% else -%>
+cacheloglevel="3"
+<% end -%>
+<%if @cachelifetime != '' -%>
+cachelifetime="<%= @cachelifetime %>"
+<% end -%>
+<%if @cachespacetool != '' -%>
+cachespacetool="<%= @ccachespacetool %>"
+<% end -%>
+<%if @cachecleantimeout != '' -%>
+cachecleantimeout="<%= @cachecleantimeout %>"
+<% end -%>
+<%if @cacheaccess != '' -%>
+cacheaccess="<%= @cacheaccess %>"
+<% end -%>
+<% end -%>
