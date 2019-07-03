@@ -95,6 +95,7 @@ class arc_ce::config (
   $cachedir            = '',
   $remotecachedir      = '',
   $cachesize           = '',
+  $cachemax            = '',
   $cacheshared         = 'no',
   $cachelogfile        = '/var/log/arc/cache-clean.log',
   $cachelifetime       = '',

@@ -74,6 +74,9 @@ remotecachedir="<%= @remotecachedir %>"
 <%if @cachesize != '' -%>
 cachesize="<%= @cachesize %>"
 <% end -%>
+<%if @cachemax != '' -%>
+cachemax="<%= @cachemax %>"
+<% end -%>
 cacheshared="<%= @cacheshared %>"
 cachelogfile="<%= @cachelogfile %>"
 <% if @debug == true then -%>
