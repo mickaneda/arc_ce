@@ -102,6 +102,9 @@ class arc_ce::config (
   $cachespacetool      = '',
   $cachecleantimeout   = '3600',
   $cacheaccess         = '',
+  $maxjobs             = '',
+  $maxrun              = '',
+  $maxtransfertries    = '',
   $runtimedir          = '/etc/arc/runtime',
   $setup_RTEs          = true,
   $rte_files           = {
