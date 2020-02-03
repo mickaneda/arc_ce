@@ -2,6 +2,7 @@ class arc_ce::repositories (
   $nordugrid_repo_version = '15.03',
   $use_nordugrid          = false,
   $use_emi                = false,
+  $use_umd                = false,
   $emi_repo_version       = 3,
   $enable_trustanchors    = true,
   $enable_lcmaps          = true,
@@ -64,7 +65,7 @@ class arc_ce::repositories (
       priority => 80,
     }
   }
-  if $enable_lcmaps or $enable_lcas {
+  if $use_umd or $enable_lcmaps or $enable_lcas {
     ensure_packages ( ['epel-release'], {
       ensure => installed,
       provider => rpm,

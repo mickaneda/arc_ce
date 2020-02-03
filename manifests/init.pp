@@ -140,6 +140,14 @@ class arc_ce (
         enable_lcmaps          => $enable_lcmaps,
         enable_lcas            => $enable_lcas,
       }
+    } elsif $install_from_repository == 'umd' {
+      class { 'arc_ce::repositories':
+        use_umd                => true,
+        emi_repo_version       => $emi_repo_version,
+        enable_trustanchors    => $enable_trustanchors,
+        enable_lcmaps          => $enable_lcmaps,
+        enable_lcas            => $enable_lcas,
+      }
     } else {
       class { 'arc_ce::repositories':
         use_emi                => true,
